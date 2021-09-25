@@ -5,7 +5,8 @@ using namespace std;
 
 int main()
 {
-    string str = "23456234566";
-    sort(str.begin(), str.end(), greater<int>)
+    string str = "234568671";
+    sort(str.begin(), str.end(), greater<int>());
+    cout << str; 
     return 0;
 }

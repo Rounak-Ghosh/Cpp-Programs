@@ -33,6 +33,6 @@ int main()
     cout << setBit(n, pos) << endl;
     cout << clearBit(n, pos) << endl;
     cout << updateBit(n, pos, value) << endl;
-     
+
     return 0;
 }
