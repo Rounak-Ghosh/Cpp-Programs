@@ -8,6 +8,16 @@ public:
     Node* next;
 };
 
+void printList(Node* n)
+{
+    while (n != NULL) 
+    {
+        cout << n->data << " ";
+        n = n->next;
+    }
+    cout << endl;
+}
+
 void insertAtEnd(Node* &head, int val)
 {
     Node* n = new Node();
@@ -54,6 +64,27 @@ bool detectCycle(Node* &head)
     }
 }
 
+void removeCycle(Node* &head)
+{
+    Node* slow =  head;
+    Node* fast = head;
+
+    do              // Using do while cuz we already know that it's a cyclic linked list
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }while(slow!=fast);
+
+    fast = head;
+    while(slow->next != fast->next)
+    {
+        slow = slow->next;
+        fast = fast->next;
+    }
+
+    slow->next = NULL; 
+}
+
 int main()          // Floyd's Algo     or      Hare & Tortoise Algo
 {
     Node* head = new Node();
@@ -67,9 +98,16 @@ int main()          // Floyd's Algo     or      Hare & Tortoise Algo
     makeCycle(head, 4);     // Cyclic Linked List
 
     if(detectCycle(head))
-        cout << "Cyclic Linked List";
+        cout << "Cyclic Linked List" << endl;
     else
-        cout << "Acyclic Linked List";
+        cout << "Acyclic Linked List" << endl;
+
+    removeCycle(head);      // Acyclic Linked List - back to original
+
+    if(detectCycle(head))
+        cout << "Cyclic Linked List" << endl;
+    else
+        cout << "Acyclic Linked List" << endl;
 
     return 0;
 }

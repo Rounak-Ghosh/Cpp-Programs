@@ -1,72 +1,21 @@
 #include<iostream>
 using namespace std;
 
-
-
-//      METHOD 1
-
-/*
-class Node {
+class Node 
+{
 public:
     int data;
     Node* next;
-
-    node(int val)
-    {
-        data = val;
-        next = NULL;
-    }
 };
 
 void printList(Node* n)
 {
-    while (n != NULL) {
-        cout << n->data << " ";
-        n = n->next;
-    }
-}
-
-int main()
-{
-    Node* head = new Node();
-    Node* second = new Node();
-    Node* third = new Node();
-
-    head -> data = 10;
-    head -> next = second;
-    second -> data = 20;
-    second -> next = third;
-    third -> data = 30;
-    third -> next = NULL;
- 
-    printList(head);
- 
-    return 0;
-}
-*/
-
-
-//      METHOD 2
-
-
-class Node {
-public:
-    int data;
-    Node* next;
-
-    node(int val)
+    while (n != NULL) 
     {
-        data = val;
-        next = NULL;
-    }
-};
-
-void printList(Node* n)
-{
-    while (n != NULL) {
         cout << n->data << " ";
         n = n->next;
     }
+    cout << endl;
 }
 
 void insertAtFront(Node* &head, int val)
@@ -98,16 +47,26 @@ int main()
     Node* second = new Node();
     Node* third = new Node();
 
+    
     head -> data = 10;
     head -> next = second;
     second -> data = 20;
     second -> next = third;
     third -> data = 30;
     third -> next = NULL;
+
+    /* Possible linked list creation
+
+    head = NULL;
+    insertAtEnd(head, 10);
+    insertAtEnd(head, 20);
+    insertAtEnd(head, 30);
+    insertAtEnd(head, 40);
+    insertAtEnd(head, 50);  */
  
     insertAtFront(head, 50);
     insertAtEnd(head, 60);
     printList(head);
- 
+
     return 0;
 }
