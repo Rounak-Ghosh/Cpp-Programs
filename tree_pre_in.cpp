@@ -15,10 +15,10 @@ struct Node
     }
 };
 
-int search(int inorder[], int start, int end, int curr)
+int search(int inorder[], int start, int end, int val)
 {
     for(int i=start; i<=end; i++)
-        if(inorder[i] == curr)
+        if(inorder[i] == val)
             return i;
     return -1;
 }
@@ -26,22 +26,22 @@ int search(int inorder[], int start, int end, int curr)
 Node* buildTree(int preorder[], int inorder[], int start, int end)
 {
     static int idx = 0;
-
+    
     if(start > end)
         return NULL;
 
-    int curr = preorder[idx];
+    int val = preorder[idx];
     idx++;
-    Node* node = new Node(curr);
+    Node* curr = new Node(val);
     
     if(start == end)
-        return node;
+        return curr;
     
-    int pos = search(inorder, start, end, curr);
-    node->left = buildTree(preorder, inorder, start, pos-1);
-    node->right = buildTree(preorder, inorder, pos+1, end);
+    int pos = search(inorder, start, end, val);
+    curr->left = buildTree(preorder, inorder, start, pos-1);
+    curr->right = buildTree(preorder, inorder, pos+1, end);
 
-    return node;
+    return curr;
 }
 
 void inorderPrint(Node* root)
