@@ -40,7 +40,7 @@ void BFS_dis(vector<int> adj[], int vertex)
             BFS(adj, i, visited[]);
     // void BFS(vector<int> adj, int source, int visited[])
 }
-*/
+
 
 int main()
 {
